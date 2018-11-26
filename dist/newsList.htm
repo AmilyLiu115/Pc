@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新闻资讯</title>
+	<link rel="stylesheet" href="css/newsList.min.css">
+</head>
+<body>
+<div id="newsList">
+	<header class="homePage-header">
+		<div class="top-header">
+			<ul class="top-header-list container">
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						发布活动
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						活动报名
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						会员中心
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						切换个人
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						登录
+					</a>
+					/
+					<a href="javascript:void(0)">
+						注册
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="bottom-header container">
+			<div class="left-side">
+				<img src="images/logo.png"
+					 alt="粤港澳大湾区人才创新园"
+					 class="logo">
+				<h1 class="title">粤港澳大湾区人才创新园</h1>
+			</div>
+
+			<ul class="right-side">
+				<li class="right-side-item"><a href="javascript:void(0)">首页</a></li>
+				<li class="right-side-item">
+					园区介绍
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">园区企业</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区政策</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区服务</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区互动</a></li>
+					</ul>
+				</li>
+				<li class="right-side-item"><a href="javascript:void(0)">新闻资讯</a></li>
+				<li class="right-side-item">
+					党政服务
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">政务服务</a></li>
+						<li class="second-item"><a href="javascript:void(0)">党建服务</a></li>
+					</ul>
+				</li>
+				<li class="right-side-item"><a href="javascript:void(0)">招聘服务</a></li>
+				<li class="right-side-item">
+					园区活动
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">园区论坛</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区培训</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区沙龙</a></li>
+					</ul>
+				</li>
+				<li class="right-side-item">
+					联系我们
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">园区招商</a></li>
+						<li class="second-item"><a href="javascript:void(0)">商业合作</a></li>
+						<li class="second-item"><a href="javascript:void(0)">关于我们</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<section class="news-list-content">
+		<div class="news-list-banner">
+
+		</div>
+		<div class="container">
+			<div class="news-list-left">
+				<div class="news-logo">
+					<a href="javascript:void(0)">
+						<h2 class="zh_name">新闻资讯</h2>
+						<span class="line"></span>
+						<p class="eng_name">News Information</p>
+					</a>
+				</div>
+
+				<ul class="news-title-list">
+					<li class="news-title-item active">
+						<a href="javascript:void(0)">新闻资讯 <span>》</span></a>
+					</li>
+				</ul>
+				<div class="phone">
+					<img src="images/connection.png" alt="联系电话">
+				</div>
+			</div>
+			<div class="news-list-right">
+				<h2>新闻资讯</h2>
+
+				<ul class="news-list">
+					<li class="news-item"
+						v-for="index,item in 5"
+						:key="index">
+						<div class="news-img">
+							<img src="images/news-logo.jpg" alt="新闻讯息">
+						</div>
+						<div class="news-info">
+							<h3>
+								<a href="javascript:void(0)">
+									智慧新平台，双创新动力--上海-亚马逊AWS联合创新中心项目招募会成功 举办
+								</a>
+							</h3>
+							<p class="time">2018-09-28</p>
+							<p class="details">{{detailText | formatText}}</p>
+							<a href="javascript:void(0)" class="more">查看更多》</a>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<footer class="homePage-footer" style="background-color: #333;">
+		<div class="footer-top container">
+			<ul class="footer-list">
+				<li class="footer-item"><a href="javascript:void(0)">首页</a></li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">园区介绍</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区企业</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区政策</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区服务</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区互动</a></li>
+					</ul>
+				</li>
+				<li class="footer-item"><a href="javascript:void(0)">新闻资讯</a></li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">党政服务</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">政务服务</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">党建服务</a></li>
+					</ul>
+				</li>
+				<li class="footer-item"><a href="javascript:void(0)">招聘服务</a></li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">园区活动</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区论坛</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区培训</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区沙龙</a></li>
+					</ul>
+				</li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">联系我们</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区招商</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">商业合作</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">关于我们</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="footer-wx">
+				<img src="images/footerWx.jpg" alt="微信二维码">
+				<p>扫码关注微信公众号</p>
+			</div>
+		</div>
+
+		<div class="footer-middle">
+			<div class="container">
+				<ul class="footer-list">
+					<li class="footer-item">电话：021-31056300</li>
+					<li class="footer-item">邮箱：12334534534@qq.com</li>
+					<li class="footer-item">地址：上海市浦东新区浦电路577号平安财富大厦裙楼301</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			Coryright 2016 www.hrosass.com.cn All rights reserved 思单得 ICP:沪ICP备1522312123
+		</div>
+	</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/newsList.min.js"></script>
+</body>
+</html>

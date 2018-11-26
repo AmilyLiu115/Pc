@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>园区活动</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/memberCenter.min.css">
+    
+</head>
+<body>
+<div id="memberCenter">
+	<header class="homePage-header">
+		<div class="top-header">
+			<ul class="top-header-list container">
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						发布活动
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						活动报名
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						会员中心
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						切换个人
+					</a>
+				</li>
+				<li class="top-header-item">
+					<a href="javascript:void(0)">
+						登录
+					</a>
+					/
+					<a href="javascript:void(0)">
+						注册
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="bottom-header container">
+			<div class="left-side">
+				<img src="images/logo.png"
+					 alt="粤港澳大湾区人才创新园"
+					 class="logo">
+				<h1 class="title">粤港澳大湾区人才创新园</h1>
+			</div>
+
+			<ul class="right-side">
+				<li class="right-side-item"><a href="javascript:void(0)">首页</a></li>
+				<li class="right-side-item">
+					园区介绍
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">园区企业</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区政策</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区服务</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区互动</a></li>
+					</ul>
+				</li>
+				<li class="right-side-item"><a href="javascript:void(0)">新闻资讯</a></li>
+				<li class="right-side-item">
+					党政服务
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">政务服务</a></li>
+						<li class="second-item"><a href="javascript:void(0)">党建服务</a></li>
+					</ul>
+				</li>
+				<li class="right-side-item"><a href="javascript:void(0)">招聘服务</a></li>
+				<li class="right-side-item">
+					园区活动
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">园区论坛</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区培训</a></li>
+						<li class="second-item"><a href="javascript:void(0)">园区沙龙</a></li>
+					</ul>
+				</li>
+				<li class="right-side-item">
+					联系我们
+					<ul class="second-list">
+						<li class="second-item"><a href="javascript:void(0)">园区招商</a></li>
+						<li class="second-item"><a href="javascript:void(0)">商业合作</a></li>
+						<li class="second-item"><a href="javascript:void(0)">关于我们</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</header>
+    <!-- 主要区域 -->
+    <div class="memberCenter clearFloat">
+        <div class="leftNavBar">
+            <h2>会员中心</h2>
+            <div>member Center</div>
+            <el-menu
+                default-active="0"
+                class="el-menu-vertical-demo"
+                @select="changeTab">
+                <el-menu-item index="1" :class="{'is-active':index==1}">
+                <span slot="title">个人中心</span>
+                </el-menu-item>
+                <el-menu-item index="2">
+                <span slot="title">我的活动</span>
+                </el-menu-item>
+                <el-menu-item index="3">
+                <span slot="title">报名信息维护</span>
+                </el-menu-item>
+          </el-menu>
+        </div>
+        <div class="memberBox userCenter" v-if="index == 1">
+            <h5>会员中心>个人信息</h5>
+            <table>
+                <tr>
+                    <td><label for="">您的昵称</label></td>
+                    <td><input type="text" placeholder="请输入您的昵称" v-model="userData.puNickname"></td>
+                </tr>
+                <tr>
+                    <td><label for="">您的手机号</label></td>
+                    <td><input type="text" placeholder="请输入您的手机号" v-model="userData.peoplePhone" disabled="disabled"></td>
+                </tr>
+                <tr>
+                    <td><label for="">您的邮箱</label></td>
+                    <td><input type="text" placeholder="请输入您的邮箱" v-model="userData.peopleMail" disabled="disabled"></td>
+                </tr>
+                <tr>
+                    <td><label for="">您的姓名</label></td>
+                    <td><input type="text" placeholder="请输入您的姓名" v-model="userData.puRealname"></td>
+                </tr>
+            </table>
+            <div class="saveBtn" v-if="showSaveBtn"><a href="javascript:void(0)" @click="saveUserData">保存</a></div>
+        </div>
+        <div class="memberBox myActivity" v-if="index == 2">
+                <div class="noSign" v-show="noSign">
+                    <h5>会员中心>我的活动</h5>
+                    <section>
+                        <img src="images/push.png" alt="">
+                        <p>
+                            您还没有报名任何活动<br/>
+                            赶紧去浏览园区活动吧
+                        </p>
+                    </section>
+                    <div class="saveBtn"><a href="javascript:void(0)">去浏览活动</a></div>
+
+                </div>
+                <div class="signList" v-show="!noSign">
+                    <h5>会员中心>我的活动</h5>
+                    <div class="statusTab">
+                        <el-tabs v-model="activeName" @tab-click="changeStatus">
+                                <el-tab-pane label="有效票" name="4"></el-tab-pane>
+                                <el-tab-pane label="待支付" name="1"></el-tab-pane>
+                                <el-tab-pane label="待审核" name="0"></el-tab-pane>
+                                <el-tab-pane label="已驳回" name="3"></el-tab-pane>
+                                <el-tab-pane label="已取消" name="2"></el-tab-pane>
+                        </el-tabs>
+					</div>
+					<div>
+						<ul class="signInfoList">
+							<li v-for="item in activityList">
+								<div class="contain clearFloat">
+									<img src="images/news-big.jpg" alt="">
+									<!-- <img :src="item.activityPoster" alt=""> -->
+									<div>
+										<h4>{{item.activityName}}</h4>
+										<p><label>活动地点</label>{{item.detailedAddress}}</p>
+										<p><label>活动时间</label>{{timestampToTime(item.startDate)}} ～ {{timestampToTime(item.endDate)}}</p>
+									</div>
+									<a href="javascript:void(0)">{{activityStatusToText(item.activityStatus)}}</a>
+								</div>
+								<table>
+									<tr>
+										<th>票种名称</th>
+										<th>数量</th>
+										<th>总价(元)</th>
+										<th>订单状态</th>
+										<th>操作</th>
+									</tr>
+									<tr>
+										<td>{{item.activityOrder.ticketName}}</td>
+										<td>{{item.activityOrder.quantity}}</td>
+										<td>{{item.activityOrder.amount}}</td>
+										<td :class="statusToClass(item.activityOrder.status)">{{statusToText(item.activityOrder.status)}}</td>
+										<td class="detailBtn" @click="showOrderDetailFn(item.activityOrder)">订单详情<span v-if="item.activityOrder.status == 1" @click.stop="toPayPage(item.id,item.activityOrder.orderNo)">立即支付</span></td>
+									</tr>
+								</table>
+							</li>
+						</ul>
+						<div class="pagerBox" v-show="showPager">
+							<el-pagination  :page-size="3" :total="totalPageCount" :current-page="currentPageNo" @current-change="handleCurrentChange" layout="prev, pager, next"></el-pagination>
+						</div>
+					</div>
+                </div>
+		</div>
+		<div class="memberBox signInfoBox" v-if="index == 3">
+				<h5>会员中心>报名信息维护</h5>
+				<div class="addSignUser" @click="openSignPopFn">添加报名人</div>
+				<table>
+					<tr>
+						<th>姓名</th>
+						<th>手机号</th>
+						<th>单位名称</th>
+						<th>职位</th>
+						<th>邮箱</th>
+						<th>操作</th>
+					</tr>
+					<tr v-for="item,index in signInfoList">
+						<td><span v-if="item.isDefault">默认</span><b>{{item.name}}</b></td>
+						<td>{{item.mobile}}</td>
+						<td>{{item.companyName}}</td>
+						<td>{{item.position}}</td>
+						<td>{{item.mail}}</td>
+						<td><b @click="editFn(index)">编辑</b><i @click="delFn(index)">删除</i><a @click="setDefaultFn(index)" href="javascript:void(0)">设为默认</a></td>
+					</tr>
+				
+				</table>
+
+				<!-- 新增报名人弹窗 -->
+				<div class="popUp" v-if="addSignInfo">
+						<div class="hide"></div>
+						<div class="signForm">
+								<p>
+									<input type="checkbox">
+									<label for=""></label>新增报名人信息
+								</p>
+								<table>
+									<tr>
+										<td>姓名<span>*</span></td>
+										<td><input type="text" placeholder="请输入姓名" v-model="editSignObj.name" @blur="checkNullFn(editSignObj.name)"></td>
+									</tr>
+									<tr>
+										<td>手机<span>*</span></td>
+										<td><input type="text" placeholder="请输入手机号码" v-model="editSignObj.mobile" :class="{'warn':indicator == 'phone'}" @blur="checkPhoneFn"></td>
+									</tr>
+									<tr>
+										<td>单位名称<span>*</span></td>
+										<td><input type="text" placeholder="请输入单位名称" v-model="editSignObj.companyName" @blur="checkNullFn(editSignObj.companyName)"></td>
+									</tr>
+									<tr>
+										<td>职位<span>*</span></td>
+										<td><input type="text" placeholder="请输入职位" v-model="editSignObj.position" @blur="checkNullFn(editSignObj.position)"></td>
+									</tr>
+									<tr>
+										<td>邮箱<span>*</span></td>
+										<td><input type="text" placeholder="请输入邮箱" v-model="editSignObj.mail" :class="{'warn':indicator == 'mail'}" @blur="checkMailFn"></td>
+									</tr>
+								</table>
+								<div class="saveBtn">
+									<a href="javascript:void(0);" @click="saveSignObjFn">保存</a>
+								</div>
+								<a href="javascript:void(0);" @click="closeSignPopFn"><img src="./images/close.png" alt=""></a>
+						</div>
+				</div>
+		</div>
+	</div>
+	<footer class="homePage-footer" style="background:url(images/footer.png) center no-repeat">
+		<div class="footer-top container">
+			<ul class="footer-list">
+				<li class="footer-item"><a href="javascript:void(0)">首页</a></li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">园区介绍</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区企业</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区政策</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区服务</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区互动</a></li>
+					</ul>
+				</li>
+				<li class="footer-item"><a href="javascript:void(0)">新闻资讯</a></li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">党政服务</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">政务服务</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">党建服务</a></li>
+					</ul>
+				</li>
+				<li class="footer-item"><a href="javascript:void(0)">招聘服务</a></li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">园区活动</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区论坛</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区培训</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区沙龙</a></li>
+					</ul>
+				</li>
+				<li class="footer-item">
+					<ul class="second-footer-lilst">
+						<li class="second-footer-item"><a href="javascript:void(0)">联系我们</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">园区招商</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">商业合作</a></li>
+						<li class="second-footer-item"><a href="javascript:void(0)">关于我们</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="footer-wx">
+				<img src="images/footerWx.jpg" alt="微信二维码">
+				<p>扫码关注微信公众号</p>
+			</div>
+		</div>
+
+		<div class="footer-middle">
+			<div class="container">
+				<ul class="footer-list">
+					<li class="footer-item">电话：021-31056300</li>
+					<li class="footer-item">邮箱：12334534534@qq.com</li>
+					<li class="footer-item">地址：上海市浦东新区浦电路577号平安财富大厦裙楼301</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			Coryright 2016 www.hrosass.com.cn All rights reserved 思单得 ICP:沪ICP备1522312123
+		</div>
+	</footer>
+	<div class="popUp" v-if="showOrderDetail">
+			<div class="hide"></div>
+			<div class="orderDetail">
+				<p>
+					<input type="checkbox">
+					<label for=""></label>订单详情
+				</p>
+				<article>
+					<p>订单号：<span>{{orderDialogObj.orderNo}}</span>订单状态：<span :class="statusToClass(orderDialogObj.orderStatus)">{{statusToText(orderDialogObj.orderStatus)}}</span></p>
+					<table>
+						<tr>
+							<th>序号</th>
+							<th>报名人</th>
+							<th>手机号</th>
+							<th>邮箱</th>
+							<th>单位名称</th>
+							<th>职位</th>
+							<th>票种</th>
+							<th>报名状态</th>
+						</tr>
+						<tr v-for="item,index in orderDialogObj.signInfoList">
+							<td>{{index+1}}</td>
+							<td>{{item.name}}</td>
+							<td>{{item.mobile}}</td>
+							<td>{{item.mail}}</td>
+							<td>{{item.companyName}}</td>
+							<td>{{item.position}}</td>
+							<td>{{orderDialogObj.ticketName}}</td>
+							<td :class="statusToClass(orderDialogObj.orderStatus)">{{statusToText(orderDialogObj.orderStatus)}}</td>
+						</tr>
+					</table>
+					<p v-if="orderDialogObj.orderStatus == 2 && orderDialogObj.remark">
+						取消原因：订单已取消<br/>
+						说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：{{orderDialogObj.remark}}。
+					</p>
+					<p v-if="orderDialogObj.orderStatus == 3 && orderDialogObj.remark">
+						取消原因：订单已驳回<br/>
+						说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：{{orderDialogObj.remark}}。
+					</p>
+				</article>
+				<a @click="closeOrderDetailFn"><img src="./images/close.png" alt=""></a>
+			</div>
+	</div>
+	<div class="load" v-if="showLoading">
+		<div class="loader"></div>
+	</div>
+</div>
+<script src="js/libs/qs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- <script src="js/libs/vue.min.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/libs/apis.min.js"></script>
+
+<script src="js/memberCenter.min.js"></script>
+</body>
+</html>
